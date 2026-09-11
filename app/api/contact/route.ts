@@ -1,5 +1,3 @@
-import { env } from 'cloudflare:workers';
-
 const recipient = 'allensamuel569@gmail.com';
 
 interface ContactPayload {
@@ -85,8 +83,8 @@ export async function POST(request: Request) {
     );
   }
 
-  const apiKey = env.RESEND_API_KEY?.trim();
-  const fromAddress = env.CONTACT_FROM_EMAIL?.trim();
+  const apiKey = process.env.RESEND_API_KEY?.trim();
+  const fromAddress = process.env.CONTACT_FROM_EMAIL?.trim();
 
   if (!apiKey || !fromAddress) {
     return Response.json(

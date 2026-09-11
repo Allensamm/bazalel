@@ -1,4 +1,4 @@
-import { env } from 'cloudflare:workers';
+import { del, put } from '@vercel/blob';
 import { createReview } from '@/lib/reviews';
 
 const allowedImageTypes = new Map([
@@ -27,9 +27,16 @@ function normalizeWebsite(value: string) {
 }
 
 export async function POST(request: Request) {
-  let imageKey: string | null = null;
+  let imageUrl: string | null = null;
 
   try {
+    if (!process.env.BLOB_READ_WRITE_TOKEN && !process.env.BLOB_STORE_ID) {
+      return Response.json(
+        { error: 'Review storage is not configured yet.' },
+        { status: 503 },
+      );
+    }
+
     const formData = await request.formData();
     const honeypot = textField(formData, 'companyWebsite');
 
@@ -84,8 +91,6 @@ export async function POST(request: Request) {
       );
     }
 
-    let imageType: string | null = null;
-
     if (hasImage) {
       const extension = allowedImageTypes.get(projectImage.type);
       if (!extension) {
@@ -102,12 +107,17 @@ export async function POST(request: Request) {
         );
       }
 
-      imageKey = `review-${crypto.randomUUID()}.${extension}`;
-      imageType = projectImage.type;
-
-      await env.UPLOADS.put(imageKey, projectImage.stream(), {
-        httpMetadata: { contentType: projectImage.type },
-      });
+      const image = await put(
+        `review-images/review-${crypto.randomUUID()}.${extension}`,
+        projectImage,
+        {
+          access: 'public',
+          addRandomSuffix: false,
+          contentType: projectImage.type,
+          cacheControlMaxAge: 31536000,
+        },
+      );
+      imageUrl = image.url;
     }
 
     await createReview({
@@ -117,14 +127,13 @@ export async function POST(request: Request) {
       websiteUrl,
       rating,
       reviewText,
-      imageKey,
-      imageType,
+      imageUrl,
     });
 
     return Response.json({ ok: true }, { status: 201 });
   } catch {
-    if (imageKey) {
-      await env.UPLOADS.delete(imageKey).catch(() => undefined);
+    if (imageUrl) {
+      await del(imageUrl).catch(() => undefined);
     }
 
     return Response.json(

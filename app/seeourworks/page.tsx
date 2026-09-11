@@ -16,18 +16,17 @@ function ReviewCard({ review }: { review: Review }) {
   const date = new Intl.DateTimeFormat('en-US', {
     month: 'short',
     year: 'numeric',
-  }).format(new Date(`${review.createdAt}Z`));
+  }).format(new Date(review.createdAt));
 
   return (
     <article className="client-review" data-reveal="up">
       <div className="client-review__visual">
-        {review.imageKey ? (
+        {review.imageUrl ? (
           <Image
-            src={`/api/review-images/${review.imageKey}`}
+            src={review.imageUrl}
             alt={`${review.companyName} website or project`}
             fill
             sizes="(max-width: 760px) 100vw, 50vw"
-            unoptimized
           />
         ) : (
           <span aria-hidden="true">{review.companyName.charAt(0).toUpperCase()}</span>

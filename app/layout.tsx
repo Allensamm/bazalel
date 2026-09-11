@@ -1,14 +1,8 @@
 import type { Metadata } from 'next';
-import { Geist } from 'next/font/google';
 import { CursorGlow } from '@/components/CursorGlow';
 import { ScrollReveal } from '@/components/ScrollReveal';
 import './globals.css';
 import './redesign.css';
-
-const geist = Geist({
-  variable: '--font-geist',
-  subsets: ['latin'],
-});
 
 export const metadata: Metadata = {
   title: {
@@ -26,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={geist.variable}>
+      <body>
         <ScrollReveal />
         <CursorGlow />
         {children}

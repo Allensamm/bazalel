@@ -1,9 +1,4 @@
-import { env } from 'cloudflare:workers';
-import {
-  createReviewsDateIndexSql,
-  createReviewsTableSql,
-  optimizeReviewsSql,
-} from '@/db/schema';
+import { list, put } from '@vercel/blob';
 
 export interface Review {
   id: string;
@@ -12,21 +7,8 @@ export interface Review {
   websiteUrl: string | null;
   rating: number;
   reviewText: string;
-  imageKey: string | null;
-  imageType: string | null;
+  imageUrl: string | null;
   createdAt: string;
-}
-
-interface ReviewRow {
-  id: string;
-  reviewer_name: string;
-  company_name: string;
-  website_url: string | null;
-  rating: number;
-  review_text: string;
-  image_key: string | null;
-  image_type: string | null;
-  created_at: string;
 }
 
 export interface NewReview {
@@ -36,75 +18,49 @@ export interface NewReview {
   websiteUrl: string | null;
   rating: number;
   reviewText: string;
-  imageKey: string | null;
-  imageType: string | null;
+  imageUrl: string | null;
 }
 
-export async function ensureReviewsSchema() {
-  const database = env.DB;
-
-  await database.batch([
-    database.prepare(createReviewsTableSql),
-    database.prepare(createReviewsDateIndexSql),
-    database.prepare(optimizeReviewsSql),
-  ]);
+function storageIsConfigured() {
+  return Boolean(process.env.BLOB_READ_WRITE_TOKEN || process.env.BLOB_STORE_ID);
 }
 
 export async function createReview(review: NewReview) {
-  await ensureReviewsSchema();
+  const storedReview: Review = {
+    ...review,
+    createdAt: new Date().toISOString(),
+  };
 
-  await env.DB.prepare(
-    `INSERT INTO reviews (
-      id,
-      reviewer_name,
-      company_name,
-      website_url,
-      rating,
-      review_text,
-      image_key,
-      image_type
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
-  )
-    .bind(
-      review.id,
-      review.reviewerName,
-      review.companyName,
-      review.websiteUrl,
-      review.rating,
-      review.reviewText,
-      review.imageKey,
-      review.imageType,
-    )
-    .run();
+  await put(`reviews/${review.id}.json`, JSON.stringify(storedReview), {
+    access: 'public',
+    addRandomSuffix: false,
+    contentType: 'application/json',
+    cacheControlMaxAge: 60,
+  });
 }
 
 export async function listReviews(): Promise<Review[]> {
-  await ensureReviewsSchema();
+  if (!storageIsConfigured()) return [];
 
-  const result = await env.DB.prepare(
-    `SELECT
-      id,
-      reviewer_name,
-      company_name,
-      website_url,
-      rating,
-      review_text,
-      image_key,
-      image_type,
-      created_at
-    FROM reviews
-    ORDER BY created_at DESC`,
-  ).all<ReviewRow>();
+  const reviewBlobs = [];
+  let cursor: string | undefined;
 
-  return result.results.map((review) => ({
-    id: review.id,
-    reviewerName: review.reviewer_name,
-    companyName: review.company_name,
-    websiteUrl: review.website_url,
-    rating: review.rating,
-    reviewText: review.review_text,
-    imageKey: review.image_key,
-    imageType: review.image_type,
-    createdAt: review.created_at,
-  }));
+  do {
+    const page = await list({ prefix: 'reviews/', cursor, limit: 1000 });
+    reviewBlobs.push(...page.blobs.filter((blob) => blob.pathname.endsWith('.json')));
+    cursor = page.hasMore ? page.cursor : undefined;
+  } while (cursor);
+
+  const reviews = await Promise.all(
+    reviewBlobs.map(async (blob) => {
+      const response = await fetch(blob.url, { cache: 'no-store' });
+      if (!response.ok) throw new Error('A stored review could not be loaded.');
+      return (await response.json()) as Review;
+    }),
+  );
+
+  return reviews.sort(
+    (first, second) =>
+      new Date(second.createdAt).getTime() - new Date(first.createdAt).getTime(),
+  );
 }
