@@ -58,7 +58,12 @@ export function ContactForm() {
   }
 
   return (
-    <form className="contact-form" onSubmit={submitContact} data-reveal="up">
+    <form
+      className="contact-form"
+      onSubmit={submitContact}
+      data-reveal="up"
+      aria-busy={status.state === 'submitting'}
+    >
       <div className="contact-form__heading">
         <p>Project enquiry</p>
         <h2>Tell us about the opportunity.</h2>
@@ -72,7 +77,14 @@ export function ContactForm() {
 
         <label>
           Work email
-          <input type="email" name="email" autoComplete="email" maxLength={160} required />
+          <input
+            type="email"
+            name="email"
+            inputMode="email"
+            autoComplete="email"
+            maxLength={160}
+            required
+          />
         </label>
 
         <label>
@@ -144,14 +156,18 @@ export function ContactForm() {
 
       <div className="contact-form__actions">
         <p>Sent securely to the Bazalel team.</p>
-        <button type="submit" disabled={status.state === 'submitting'}>
+        <button
+          type="submit"
+          disabled={status.state === 'submitting'}
+          aria-describedby="contact-form-status"
+        >
           {status.state === 'submitting' ? 'Sending…' : 'Send enquiry'}
           <span aria-hidden="true">→</span>
         </button>
       </div>
 
-      <div className="contact-form__status" aria-live="polite">
-        {status.state === 'error' && <p>{status.message}</p>}
+      <div id="contact-form-status" className="contact-form__status" aria-live="polite">
+        {status.state === 'error' && <p role="alert">{status.message}</p>}
       </div>
     </form>
   );

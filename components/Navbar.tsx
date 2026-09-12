@@ -1,9 +1,11 @@
 'use client';
 
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 export function Navbar() {
+  const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -18,11 +20,20 @@ export function Navbar() {
   return (
     <header className={`navbar${isScrolled ? ' navbar--scrolled' : ''}`}>
       <nav className="navbar__inner" aria-label="Primary navigation">
-        <Link className="wordmark" href="/" aria-label="Bazalel home">
+        <Link
+          className="wordmark"
+          href="/"
+          aria-label="Bazalel home"
+          aria-current={pathname === '/' ? 'page' : undefined}
+        >
           Bazalel
         </Link>
 
-        <Link className="contact-link" href="/contact">
+        <Link
+          className="contact-link"
+          href="/contact"
+          aria-current={pathname === '/contact' ? 'page' : undefined}
+        >
           Get in touch
         </Link>
       </nav>

@@ -9,7 +9,7 @@ type FormStatus =
   | { state: 'success' }
   | { state: 'error'; message: string };
 
-export function ReviewForm() {
+export function ReviewForm({ submissionKey = '' }: { submissionKey?: string }) {
   const [status, setStatus] = useState<FormStatus>({ state: 'idle' });
   const [fileName, setFileName] = useState('');
 
@@ -19,6 +19,14 @@ export function ReviewForm() {
     const formData = new FormData(form);
     const websiteUrl = String(formData.get('websiteUrl') ?? '').trim();
     const image = formData.get('projectImage');
+
+    if (image instanceof File && image.size > 5 * 1024 * 1024) {
+      setStatus({
+        state: 'error',
+        message: 'The image must be smaller than 5 MB.',
+      });
+      return;
+    }
 
     if (!websiteUrl && (!(image instanceof File) || image.size === 0)) {
       setStatus({
@@ -61,15 +69,19 @@ export function ReviewForm() {
       <div className="review-success" role="status">
         <span aria-hidden="true">✓</span>
         <p className="review-form__eyebrow">Review received</p>
-        <h2>Thank you for sharing your experience.</h2>
+        <h1>Thank you for sharing your experience.</h1>
         <p>Your review is now live in the Bazalel work collection.</p>
-        <Link href="/seeourworks">See your review <span aria-hidden="true">↗</span></Link>
+        <Link href="/work">See your review <span aria-hidden="true">↗</span></Link>
       </div>
     );
   }
 
   return (
-    <form className="review-form" onSubmit={submitReview}>
+    <form
+      className="review-form"
+      onSubmit={submitReview}
+      aria-busy={status.state === 'submitting'}
+    >
       <div className="review-form__heading">
         <p className="review-form__eyebrow">Private review link</p>
         <h1>Tell us about working with Bazalel.</h1>
@@ -80,6 +92,8 @@ export function ReviewForm() {
       </div>
 
       <div className="review-form__grid">
+        <input type="hidden" name="submissionKey" value={submissionKey} />
+
         <label>
           Your name
           <input
@@ -121,6 +135,7 @@ export function ReviewForm() {
             inputMode="url"
             autoComplete="url"
             placeholder="https://yourwebsite.com"
+            maxLength={300}
           />
         </label>
 
@@ -138,7 +153,7 @@ export function ReviewForm() {
 
         <label className="review-form__upload">
           <span>Website or project image</span>
-          <span className="review-form__upload-control">
+          <span className="review-form__upload-control" id="review-upload-help">
             <strong>{fileName || 'Choose an image'}</strong>
             <small>JPG, PNG, WebP or GIF · 5 MB maximum</small>
           </span>
@@ -146,6 +161,7 @@ export function ReviewForm() {
             type="file"
             name="projectImage"
             accept="image/jpeg,image/png,image/webp,image/gif"
+            aria-describedby="review-upload-help"
             onChange={(event) => setFileName(event.target.files?.[0]?.name ?? '')}
           />
         </label>
@@ -161,14 +177,18 @@ export function ReviewForm() {
           Add either a website link or a project image. Your review will be
           published when submitted.
         </p>
-        <button type="submit" disabled={status.state === 'submitting'}>
+        <button
+          type="submit"
+          disabled={status.state === 'submitting'}
+          aria-describedby="review-form-status"
+        >
           {status.state === 'submitting' ? 'Publishing…' : 'Publish review'}
           <span aria-hidden="true">↗</span>
         </button>
       </div>
 
-      <div className="review-form__status" aria-live="polite">
-        {status.state === 'error' && <p>{status.message}</p>}
+      <div id="review-form-status" className="review-form__status" aria-live="polite">
+        {status.state === 'error' && <p role="alert">{status.message}</p>}
       </div>
     </form>
   );

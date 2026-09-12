@@ -1,21 +1,21 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ContactForm } from '@/components/ContactForm';
-import { Navbar } from '@/components/Navbar';
 import { SiteFooter } from '@/components/SiteFooter';
+import { CONTACT_EMAIL, createPageMetadata } from '@/lib/site';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: 'Contact',
   description:
     'Tell Bazalel what your website needs to achieve and start a focused Squarespace website project.',
-};
+  path: '/contact',
+});
 
 export default function ContactPage() {
   return (
-    <main className="contact-page">
-      <Navbar />
-
-      <section className="contact-page__body grid-surface">
+    <>
+      <main id="main-content" className="contact-page">
+        <section className="contact-page__body grid-surface">
         <div className="contact-page__layout">
           <div className="contact-page__intro" data-reveal="up">
             <p className="contact-page__eyebrow">Start a conversation</p>
@@ -36,17 +36,15 @@ export default function ContactPage() {
 
             <p className="contact-page__direct">
               Prefer email?{' '}
-              <Link href="mailto:allensamuel569@gmail.com">
-                allensamuel569@gmail.com
-              </Link>
+              <Link href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</Link>
             </p>
           </div>
 
           <ContactForm />
         </div>
-      </section>
-
+        </section>
+      </main>
       <SiteFooter />
-    </main>
+    </>
   );
 }

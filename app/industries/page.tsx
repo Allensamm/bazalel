@@ -1,13 +1,14 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { Navbar } from '@/components/Navbar';
 import { SiteFooter } from '@/components/SiteFooter';
+import { createPageMetadata } from '@/lib/site';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: 'Industries',
   description:
     'Bazalel builds strategic Squarespace websites for law firms, consultants, financial services, healthcare practices, property businesses, studios, and other expert-led companies.',
-};
+  path: '/industries',
+});
 
 const industries = [
   {
@@ -111,10 +112,9 @@ const fitSignals = [
 
 export default function IndustriesPage() {
   return (
-    <main className="industries-page">
-      <Navbar />
-
-      <header className="industries-hero grid-surface">
+    <>
+      <main id="main-content" className="industries-page">
+        <header className="industries-hero grid-surface">
         <div className="industries-hero__inner">
           <p data-reveal="up">Industries</p>
           <h1 data-reveal="up" className="reveal-delay-1">
@@ -203,9 +203,9 @@ export default function IndustriesPage() {
             Start a conversation <span aria-hidden="true">→</span>
           </Link>
         </div>
-      </section>
-
+        </section>
+      </main>
       <SiteFooter />
-    </main>
+    </>
   );
 }

@@ -105,6 +105,9 @@ export function LawFirmNiche() {
             services, surface the firm’s proof, and guide high-intent visitors towards
             a consultation—without making the site feel generic or overcomplicated.
           </p>
+          <Link className="niche__detail-link" href="/law-firm-web-design">
+            Explore law firm web design <span aria-hidden="true">→</span>
+          </Link>
         </div>
 
         <dl className="niche__facts">

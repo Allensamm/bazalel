@@ -1,10 +1,19 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { BrandHero } from '@/components/BrandHero';
 import { LawFirmNiche } from '@/components/LawFirmNiche';
-import { Navbar } from '@/components/Navbar';
 import { PortfolioShowcase } from '@/components/PortfolioShowcase';
 import { SiteFooter } from '@/components/SiteFooter';
 import { WordReveal } from '@/components/WordReveal';
+import { StructuredData } from '@/components/StructuredData';
+import { createPageMetadata, SITE_URL } from '@/lib/site';
+
+export const metadata: Metadata = createPageMetadata({
+  title: 'Squarespace Web Design for Service Businesses | Bazalel',
+  description:
+    'Bazalel designs strategy-led Squarespace websites for law firms, consultants, professional services, healthcare, financial services, and growing businesses.',
+  path: '/',
+});
 
 const metrics = [
   {
@@ -32,11 +41,50 @@ const outcomes = [
 ];
 
 export default function Home() {
+  const structuredData = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Organization',
+      '@id': `${SITE_URL}/#organization`,
+      name: 'Bazalel',
+      url: `${SITE_URL}/`,
+      description:
+        'A Squarespace web design agency for law firms and professional-service businesses.',
+      parentOrganization: {
+        '@type': 'Organization',
+        name: 'Join2getherWork',
+        url: 'https://join2gether.work/',
+      },
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'WebSite',
+      '@id': `${SITE_URL}/#website`,
+      name: 'Bazalel',
+      url: `${SITE_URL}/`,
+      publisher: { '@id': `${SITE_URL}/#organization` },
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Service',
+      '@id': `${SITE_URL}/#squarespace-web-design`,
+      name: 'Squarespace Web Design',
+      serviceType: 'Squarespace website strategy, design, and development',
+      url: `${SITE_URL}/`,
+      provider: { '@id': `${SITE_URL}/#organization` },
+      audience: {
+        '@type': 'BusinessAudience',
+        audienceType: 'Law firms and professional-service businesses',
+      },
+    },
+  ];
+
   return (
-    <main className="site-shell">
-      <Navbar />
-      <BrandHero />
-      <WordReveal />
+    <>
+      <main id="main-content" className="site-shell">
+        <StructuredData data={structuredData} />
+        <BrandHero />
+        <WordReveal />
 
       <section className="metrics grid-surface" aria-label="Bazalel by the numbers">
         <div className="section-rule" data-reveal="up">
@@ -107,9 +155,10 @@ export default function Home() {
         </div>
       </section>
 
-      <PortfolioShowcase />
-      <LawFirmNiche />
+        <PortfolioShowcase />
+        <LawFirmNiche />
+      </main>
       <SiteFooter />
-    </main>
+    </>
   );
 }

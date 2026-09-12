@@ -1186,6 +1186,7 @@ a {
   font-weight: 760;
 }
 
+.review-success h1,
 .review-success h2 {
   max-width: 700px;
   margin: 22px auto 18px;

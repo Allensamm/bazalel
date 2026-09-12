@@ -11,27 +11,36 @@ export function SiteFooter() {
 
         <div>
           <h2>Explore</h2>
-          <Link href="/#approach">Approach</Link>
+          <Link href="/approach">Approach</Link>
           <Link href="/industries">Industries</Link>
-          <Link href="/seeourworks">Our work</Link>
+          <Link href="/law-firm-web-design">Law firm web design</Link>
+          <Link href="/work">Our work</Link>
         </div>
 
         <div>
           <h2>Start</h2>
           <Link href="/contact">Contact</Link>
-          <Link href="/seeourworks">Client stories</Link>
+          <Link href="/work#client-stories">Client stories</Link>
         </div>
 
         <div>
           <h2>Parent company</h2>
-          <Link href="https://join2gether.work" target="_blank" rel="noreferrer">
+          <Link
+            href="https://join2gether.work"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Join2getherWork ↗
           </Link>
         </div>
       </div>
       <div className="site-footer__bottom">
         <p>© {new Date().getFullYear()} Bazalel. All rights reserved.</p>
-        <p>A Join2getherWork company.</p>
+        <div>
+          <Link href="/privacy">Privacy</Link>
+          <Link href="/terms">Terms</Link>
+          <p>A Join2getherWork company.</p>
+        </div>
       </div>
     </footer>
   );

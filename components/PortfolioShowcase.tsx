@@ -12,6 +12,11 @@ export function PortfolioShowcase() {
   useEffect(() => {
     let animationFrame = 0;
 
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      if (imageRef.current) imageRef.current.style.transform = 'translate3d(-50%, 0, 0)';
+      return;
+    }
+
     const updatePreview = () => {
       const section = sectionRef.current;
       const frame = frameRef.current;
@@ -67,7 +72,7 @@ export function PortfolioShowcase() {
 
           <div className="portfolio-showcase__shade" aria-hidden="true" />
 
-          <Link className="works-link" href="/seeourworks">
+          <Link className="works-link" href="/work">
             See our works
             <span aria-hidden="true">↗</span>
           </Link>

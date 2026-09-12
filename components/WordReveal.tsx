@@ -3,8 +3,8 @@
 import { useEffect, useRef } from 'react';
 
 const statements = [
-  'Most sought after Squarespace website design agency',
-  'Over 30+ Squarespace website Delivered.',
+  'Most sought-after Squarespace website design agency',
+  '30+ Squarespace websites delivered.',
 ];
 
 export function WordReveal() {
@@ -54,7 +54,7 @@ export function WordReveal() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="word-reveal grid-surface" aria-label="Our approach">
+    <section ref={sectionRef} className="word-reveal grid-surface">
       <div className="word-reveal__sticky">
         <div className="word-reveal__content">
           <p>
