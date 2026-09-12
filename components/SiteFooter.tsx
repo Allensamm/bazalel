@@ -15,6 +15,7 @@ export function SiteFooter() {
           <Link href="/industries">Industries</Link>
           <Link href="/law-firm-web-design">Law firm web design</Link>
           <Link href="/work">Our work</Link>
+          <Link href="/bazalelpages">Bazalel Pages</Link>
         </div>
 
         <div>

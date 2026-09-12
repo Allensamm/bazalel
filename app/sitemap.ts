@@ -1,4 +1,5 @@
 import type { MetadataRoute } from 'next';
+import { articles } from '@/lib/articles';
 import { projects } from '@/lib/projects';
 import { absoluteUrl } from '@/lib/site';
 
@@ -14,6 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/industries', changeFrequency: 'monthly', priority: 0.8 },
     { path: '/approach', changeFrequency: 'monthly', priority: 0.7 },
     { path: '/contact', changeFrequency: 'yearly', priority: 0.7 },
+    { path: '/bazalelpages', changeFrequency: 'monthly', priority: 0.8 },
     { path: '/privacy', changeFrequency: 'yearly', priority: 0.2 },
     { path: '/terms', changeFrequency: 'yearly', priority: 0.2 },
   ];
@@ -24,6 +26,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
+  const articlePages = articles.map((article) => ({
+    url: absoluteUrl(`/bazalelpages/${article.slug}`),
+    lastModified: article.updatedAt,
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+  }));
+
   return [
     ...pages.map((page) => ({
       url: absoluteUrl(page.path),
@@ -31,5 +40,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: page.priority,
     })),
     ...projectPages,
+    ...articlePages,
   ];
 }
