@@ -2,10 +2,7 @@ import type { Metadata } from 'next';
 
 export const SITE_NAME = 'Bazalel';
 export const SITE_URL = 'https://www.bazaleldesign.com';
-export const DEFAULT_CONTACT_EMAIL = 'allensamuel569@gmail.com';
-
-export const CONTACT_EMAIL =
-  process.env.CONTACT_TO_EMAIL?.trim() || DEFAULT_CONTACT_EMAIL;
+export const CONTACT_EMAIL = 'allen@bazaleldesign.com';
 
 export function absoluteUrl(path = '/') {
   return new URL(path, SITE_URL).toString();

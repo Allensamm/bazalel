@@ -22,7 +22,9 @@ To enable contact-form email delivery, add these project environment variables:
 
 - `RESEND_API_KEY`
 - `CONTACT_FROM_EMAIL` (an address on a domain verified with Resend)
-- `CONTACT_TO_EMAIL` (optional; currently falls back to `allensamuel569@gmail.com`)
+
+Contact-form enquiries are delivered to `allen@bazaleldesign.com`, which is
+centralized in `lib/site.ts` and also used for the public contact link.
 
 To protect the private review form, add a long random `REVIEW_SUBMISSION_KEY`.
 The review link then becomes:
@@ -39,9 +41,9 @@ Apply environment variables to Production and Preview as needed, then redeploy.
   Make `www.bazaleldesign.com` primary and redirect the apex domain to it.
 - Connect a Vercel Blob store before accepting reviews. Review text and uploaded
   images are intentionally published on the Work page.
-- Configure the Resend variables above. After `hello@bazaleldesign.com` or
-  `allen@bazaleldesign.com` is active, set `CONTACT_TO_EMAIL` once in Vercel;
-  no source-code replacement is required.
+- Make sure `allen@bazaleldesign.com` is active and receiving mail. Configure
+  the Resend variables above, using an address on a Resend-verified domain for
+  `CONTACT_FROM_EMAIL`.
 - Keep the Content Security Policy in Report-Only mode while reviewing the
   browser console on production and preview pages. Enforce it only after
   confirming that legitimate resources do not generate violations.
