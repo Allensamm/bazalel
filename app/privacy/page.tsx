@@ -29,7 +29,7 @@ const sections = [
   {
     title: 'Service providers and storage',
     paragraphs: [
-      'The website is hosted by Vercel. Contact messages are delivered through Resend, and submitted review content or images may be stored using Vercel Blob. These providers may process technical and submitted information according to their own terms and privacy practices.',
+      'The website is hosted by Vercel. Contact enquiries are stored in Supabase, optional email notifications may be delivered through Resend, and submitted review content or images may be stored using Vercel Blob. These providers may process technical and submitted information according to their own terms and privacy practices.',
       'We do not sell personal information. We share information only where reasonably necessary to operate the website, deliver requested services, protect our rights, or comply with law.',
     ],
   },

@@ -18,13 +18,36 @@ from the `main` branch.
 To enable the review form, create a Vercel Blob store for the project. Vercel
 will provide the `BLOB_READ_WRITE_TOKEN` environment variable.
 
-To enable contact-form email delivery, add these project environment variables:
+## Private enquiry inbox
+
+Contact-form submissions are stored in Supabase and displayed only at
+`/myrequest` after the administrator completes password and authenticator-app
+verification. Add these Vercel environment variables:
+
+- `NEXT_PUBLIC_SUPABASE_URL`
+- `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`
+- `SUPABASE_SECRET_KEY` (server-only; never use a `NEXT_PUBLIC_` prefix)
+
+In the Supabase SQL Editor, run:
+
+```text
+supabase/migrations/20260912000000_create_contact_requests.sql
+```
+
+Then create exactly one administrator under Authentication → Users with the
+email `allen@bazaleldesign.com` and a strong unique password. Do not expose a
+sign-up route, and disable public user registration in Supabase. On the first
+login, `/myrequest` will ask the administrator to scan a QR code with an
+authenticator app and verify the current six-digit code.
+
+Email notification is optional. Supabase storage succeeds independently of
+Resend. To receive a notification after an enquiry is saved, add:
 
 - `RESEND_API_KEY`
 - `CONTACT_FROM_EMAIL` (an address on a domain verified with Resend)
 
-Contact-form enquiries are delivered to `allen@bazaleldesign.com`, which is
-centralized in `lib/site.ts` and also used for the public contact link.
+Optional notification emails are delivered to `allen@bazaleldesign.com`, which
+is centralized in `lib/site.ts` and also used for the public contact link.
 
 To protect the private review form, add a long random `REVIEW_SUBMISSION_KEY`.
 The review link then becomes:
@@ -41,8 +64,20 @@ Apply environment variables to Production and Preview as needed, then redeploy.
   Make `www.bazaleldesign.com` primary and redirect the apex domain to it.
 - Connect a Vercel Blob store before accepting reviews. Review text and uploaded
   images are intentionally published on the Work page.
-- Make sure `allen@bazaleldesign.com` is active and receiving mail. Configure
-  the Resend variables above, using an address on a Resend-verified domain for
+- Create a Supabase project, run the included contact-request migration, create
+  only the `allen@bazaleldesign.com` administrator, disable public sign-ups,
+  and add the three Supabase variables above to Vercel Production.
+- Store `SUPABASE_SECRET_KEY` only in Vercel's server-side environment. It
+  bypasses Row Level Security and must never be committed or exposed to the
+  browser.
+- Save a backup authenticator factor in Supabase or keep its setup secret in a
+  secure password manager. Losing every factor requires an administrator reset
+  from the Supabase dashboard.
+- Free Supabase projects may pause after inactivity. Monitor the project and
+  consider a paid plan later if uninterrupted production availability becomes
+  essential.
+- Optional: make sure `allen@bazaleldesign.com` is active and receiving mail,
+  then configure Resend using an address on a verified domain for
   `CONTACT_FROM_EMAIL`.
 - Keep the Content Security Policy in Report-Only mode while reviewing the
   browser console on production and preview pages. Enforce it only after

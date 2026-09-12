@@ -1,4 +1,6 @@
 import { CONTACT_EMAIL } from '@/lib/site';
+import { storeContactRequest } from '@/lib/contact-requests';
+import { after } from 'next/server';
 import {
   checkRateLimit,
   exceedsContentLength,
@@ -138,12 +140,23 @@ export async function POST(request: Request) {
     );
   }
 
+  const contactRequest = { name, email, company, website, industry, timeline, message };
+  const storage = await storeContactRequest(contactRequest);
+
+  if (storage.configured && !storage.stored) {
+    return jsonResponse(
+      { error: 'Your enquiry could not be saved. Please try again shortly.' },
+      { status: 502 },
+    );
+  }
+
   const apiKey = process.env.RESEND_API_KEY?.trim();
   const fromAddress = process.env.CONTACT_FROM_EMAIL?.trim();
+  const emailConfigured = Boolean(apiKey && fromAddress);
 
-  if (!apiKey || !fromAddress) {
+  if (!storage.configured && !emailConfigured) {
     return jsonResponse(
-      { error: 'Email delivery is not configured yet. Please email us directly.' },
+      { error: 'Enquiry delivery is not configured yet. Please email us directly.' },
       { status: 503 },
     );
   }
@@ -158,60 +171,80 @@ export async function POST(request: Request) {
     message: escapeHtml(message).replace(/\n/g, '<br />'),
   };
 
-  let response: Response;
+  async function sendEmailNotification(deliveryKey: string, sender: string) {
+    try {
+      const response = await fetch('https://api.resend.com/emails', {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${deliveryKey}`,
+          'Content-Type': 'application/json',
+          'Idempotency-Key': crypto.randomUUID(),
+        },
+        body: JSON.stringify({
+          from: sender,
+          to: [CONTACT_EMAIL],
+          reply_to: email,
+          subject: `New Bazalel enquiry from ${name} — ${company}`,
+          text: [
+            `Name: ${name}`,
+            `Email: ${email}`,
+            `Business: ${company}`,
+            `Website: ${website || 'Not provided'}`,
+            `Industry: ${industry}`,
+            `Timeline: ${timeline}`,
+            '',
+            'Project goal:',
+            message,
+          ].join('\n'),
+          html: `
+            <h1>New Bazalel project enquiry</h1>
+            <p><strong>Name:</strong> ${safe.name}</p>
+            <p><strong>Email:</strong> ${safe.email}</p>
+            <p><strong>Business:</strong> ${safe.company}</p>
+            <p><strong>Website:</strong> ${safe.website}</p>
+            <p><strong>Industry:</strong> ${safe.industry}</p>
+            <p><strong>Timeline:</strong> ${safe.timeline}</p>
+            <hr />
+            <p><strong>What the website should help achieve:</strong></p>
+            <p>${safe.message}</p>
+          `,
+        }),
+        signal: AbortSignal.timeout(12_000),
+      });
 
-  try {
-    response = await fetch('https://api.resend.com/emails', {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${apiKey}`,
-        'Content-Type': 'application/json',
-        'Idempotency-Key': crypto.randomUUID(),
-      },
-      body: JSON.stringify({
-        from: fromAddress,
-        to: [CONTACT_EMAIL],
-        reply_to: email,
-        subject: `New Bazalel enquiry from ${name} — ${company}`,
-        text: [
-          `Name: ${name}`,
-          `Email: ${email}`,
-          `Business: ${company}`,
-          `Website: ${website || 'Not provided'}`,
-          `Industry: ${industry}`,
-          `Timeline: ${timeline}`,
-          '',
-          'Project goal:',
-          message,
-        ].join('\n'),
-        html: `
-          <h1>New Bazalel project enquiry</h1>
-          <p><strong>Name:</strong> ${safe.name}</p>
-          <p><strong>Email:</strong> ${safe.email}</p>
-          <p><strong>Business:</strong> ${safe.company}</p>
-          <p><strong>Website:</strong> ${safe.website}</p>
-          <p><strong>Industry:</strong> ${safe.industry}</p>
-          <p><strong>Timeline:</strong> ${safe.timeline}</p>
-          <hr />
-          <p><strong>What the website should help achieve:</strong></p>
-          <p>${safe.message}</p>
-        `,
-      }),
-      signal: AbortSignal.timeout(12_000),
-    });
-  } catch {
+      if (!response.ok) {
+        console.error('Resend notification failed.', { status: response.status });
+      }
+
+      return response.ok;
+    } catch {
+      console.error('Resend notification failed.', {
+        message: 'Resend request failed or timed out.',
+      });
+      return false;
+    }
+  }
+
+  if (storage.stored) {
+    if (apiKey && fromAddress) {
+      after(async () => {
+        await sendEmailNotification(apiKey, fromAddress);
+      });
+    }
+
+    return jsonResponse({ ok: true, stored: true });
+  }
+
+  const emailDelivered = apiKey && fromAddress
+    ? await sendEmailNotification(apiKey, fromAddress)
+    : false;
+
+  if (!emailDelivered) {
     return jsonResponse(
       { error: 'Your message could not be delivered. Please email us directly.' },
       { status: 502 },
     );
   }
 
-  if (!response.ok) {
-    return jsonResponse(
-      { error: 'Your message could not be delivered. Please email us directly.' },
-      { status: 502 },
-    );
-  }
-
-  return jsonResponse({ ok: true });
+  return jsonResponse({ ok: true, stored: false });
 }

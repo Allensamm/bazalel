@@ -155,7 +155,7 @@ export function ContactForm() {
       </div>
 
       <div className="contact-form__actions">
-        <p>Sent securely to the Bazalel team.</p>
+        <p>Saved securely in Bazalel’s private inbox.</p>
         <button
           type="submit"
           disabled={status.state === 'submitting'}
