@@ -40,6 +40,22 @@ sign-up route, and disable public user registration in Supabase. On the first
 login, `/myrequest` will ask the administrator to scan a QR code with an
 authenticator app and verify the current six-digit code.
 
+The login password can be shown or hidden with the control inside the password
+field. Password recovery starts from “Forgot your password?” and sends a secure
+link to `allen@bazaleldesign.com`. After opening that link, the existing
+authenticator factor must be verified before the new password form is shown.
+Add this exact URL under Supabase → Authentication → URL Configuration →
+Redirect URLs:
+
+```text
+https://www.bazaleldesign.com/myrequest/reset-password
+```
+
+For local recovery testing, also allow
+`http://localhost:3000/myrequest/reset-password`. Email access and the
+authenticator app are both needed for recovery; the authenticator code is not a
+password replacement.
+
 Email notification is optional. Supabase storage succeeds independently of
 Resend. To receive a notification after an enquiry is saved, add:
 

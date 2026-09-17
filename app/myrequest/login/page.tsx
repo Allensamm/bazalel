@@ -14,7 +14,12 @@ export const metadata: Metadata = createPageMetadata({
   noIndex: true,
 });
 
-export default async function MyRequestLoginPage() {
+interface MyRequestLoginPageProps {
+  searchParams: Promise<{ reset?: string | string[] }>;
+}
+
+export default async function MyRequestLoginPage({ searchParams }: MyRequestLoginPageProps) {
+  const parameters = await searchParams;
   const configured = Boolean(getSupabasePublicConfig());
   const supabase = await createSupabaseServerClient();
 
@@ -34,7 +39,7 @@ export default async function MyRequestLoginPage() {
           Administrator access requires your password and a code from your authenticator app.
         </p>
         {configured ? (
-          <AdminLoginForm />
+          <AdminLoginForm passwordReset={parameters.reset === 'success'} />
         ) : (
           <p className="admin-auth__notice" role="status">
             The private inbox is not configured yet.

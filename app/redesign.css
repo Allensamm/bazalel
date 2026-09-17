@@ -1561,6 +1561,42 @@ html::-webkit-scrollbar-thumb {
   box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.14);
 }
 
+.admin-auth__password-field {
+  position: relative;
+  display: block;
+}
+
+.admin-auth__password-field input {
+  padding-right: 76px;
+}
+
+.admin-auth__form .admin-auth__password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  min-height: 36px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: transparent;
+  color: rgba(0, 0, 0, 0.58);
+  font-size: 0.7rem;
+  transform: translateY(-50%);
+}
+
+.admin-auth__form .admin-auth__password-toggle:hover {
+  background: rgba(0, 0, 0, 0.06);
+  color: var(--color-primary);
+  opacity: 1;
+  transform: translateY(-50%);
+}
+
+.admin-auth__form .admin-auth__password-toggle:focus-visible,
+.admin-auth__form .admin-auth__forgot:focus-visible,
+.admin-auth__recovery-status button:focus-visible {
+  outline: 3px solid rgba(124, 58, 237, 0.35);
+  outline-offset: 2px;
+}
+
 .admin-auth__form button,
 .admin-inbox__signout {
   min-height: 44px;
@@ -1582,6 +1618,26 @@ html::-webkit-scrollbar-thumb {
   transform: translateY(-2px);
 }
 
+.admin-auth__form .admin-auth__forgot {
+  min-height: auto;
+  padding: 2px 0;
+  justify-self: start;
+  border-radius: 0;
+  background: transparent;
+  color: rgba(0, 0, 0, 0.58);
+  font-size: 0.74rem;
+  text-decoration: underline;
+  text-decoration-color: rgba(0, 0, 0, 0.22);
+  text-underline-offset: 4px;
+}
+
+.admin-auth__form .admin-auth__forgot:hover {
+  background: transparent;
+  color: var(--color-accent);
+  opacity: 1;
+  transform: none;
+}
+
 .admin-auth__form button:disabled,
 .admin-inbox__signout:disabled {
   cursor: wait;
@@ -1600,6 +1656,44 @@ html::-webkit-scrollbar-thumb {
   font-size: 0.78rem;
   font-weight: 700;
   line-height: 1.5;
+}
+
+.admin-auth__status p[data-tone='success'] {
+  color: #276749;
+}
+
+.admin-auth__hint {
+  margin: -6px 0 0;
+  color: rgba(0, 0, 0, 0.48);
+  font-size: 0.7rem;
+  line-height: 1.5;
+}
+
+.admin-auth__recovery-status {
+  display: grid;
+  margin-top: 34px;
+  gap: 18px;
+  color: rgba(0, 0, 0, 0.58);
+  font-size: 0.8rem;
+  line-height: 1.55;
+}
+
+.admin-auth__recovery-status p {
+  margin: 0;
+  color: var(--color-accent-warm);
+  font-weight: 700;
+}
+
+.admin-auth__recovery-status button {
+  min-height: 44px;
+  padding: 10px 18px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--color-primary);
+  color: var(--color-white);
+  cursor: pointer;
+  font: inherit;
+  font-weight: 760;
 }
 
 .admin-auth__notice {
