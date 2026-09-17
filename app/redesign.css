@@ -3511,6 +3511,35 @@ html::-webkit-scrollbar-thumb {
     min-height: 44px;
   }
 
+  .client-review__view {
+    opacity: 1;
+    transform: none;
+  }
+
+  .website-sample-modal {
+    width: calc(100vw - 16px);
+    height: calc(100svh - 16px);
+    border-radius: 18px;
+  }
+
+  .website-sample-modal__header {
+    min-height: 72px;
+    padding: 12px 12px 12px 17px;
+  }
+
+  .website-sample-modal__actions > a {
+    display: none;
+  }
+
+  .website-sample-modal__actions > button {
+    width: 40px;
+    height: 40px;
+  }
+
+  .website-sample-modal__viewport {
+    padding: 9px;
+  }
+
   .site-footer__grid > div:not(.site-footer__brand) a {
     display: inline-flex;
     min-height: 28px;
@@ -3610,6 +3639,15 @@ html::-webkit-scrollbar-thumb {
 
   .not-found-page {
     padding: 130px 18px 90px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .website-sample-modal[open],
+  .client-review__visual--button img,
+  .client-review__view {
+    animation: none;
+    transition: none;
   }
 }
 

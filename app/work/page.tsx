@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import { ReviewWebsitePreview } from '@/components/ReviewWebsitePreview';
 import { SiteFooter } from '@/components/SiteFooter';
 import { listReviews, type Review } from '@/lib/reviews';
 import { projects } from '@/lib/projects';
@@ -24,18 +25,11 @@ function ReviewCard({ review }: { review: Review }) {
 
   return (
     <article className="client-review" data-reveal="up">
-      <div className="client-review__visual">
-        {review.imageUrl ? (
-          <Image
-            src={review.imageUrl}
-            alt={`${review.companyName} website or project shared with their review`}
-            fill
-            sizes="(max-width: 760px) 100vw, 50vw"
-          />
-        ) : (
-          <span aria-hidden="true">{review.companyName.charAt(0).toUpperCase()}</span>
-        )}
-      </div>
+      <ReviewWebsitePreview
+        companyName={review.companyName}
+        imageUrl={review.imageUrl}
+        websiteUrl={review.websiteUrl}
+      />
 
       <div className="client-review__content">
         <div className="client-review__meta">

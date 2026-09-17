@@ -1289,8 +1289,11 @@ a {
 .client-review__visual {
   position: relative;
   display: grid;
+  width: 100%;
   min-height: 300px;
+  padding: 0;
   overflow: hidden;
+  border: 0;
   background: var(--color-background);
   color: var(--color-accent);
   place-items: center;
@@ -1298,11 +1301,199 @@ a {
 
 .client-review__visual img {
   object-fit: cover;
+  object-position: top;
 }
 
-.client-review__visual > span {
+.client-review__initial {
   font-size: 7rem;
   font-weight: 650;
+}
+
+.client-review__visual--button {
+  cursor: zoom-in;
+}
+
+.client-review__visual--button img {
+  transition: filter 220ms ease, transform 300ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.client-review__visual--button:hover img,
+.client-review__visual--button:focus-visible img {
+  filter: brightness(0.72);
+  transform: scale(1.025);
+}
+
+.client-review__visual--button:focus-visible {
+  outline: 4px solid var(--color-accent);
+  outline-offset: -4px;
+}
+
+.client-review__view {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  min-height: 38px;
+  padding: 9px 15px;
+  align-items: center;
+  gap: 7px;
+  border-radius: 999px;
+  background: rgba(8, 8, 8, 0.9);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  color: var(--color-white);
+  font-size: 0.72rem;
+  font-weight: 750;
+  letter-spacing: -0.01em;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.client-review__visual--button:hover .client-review__view,
+.client-review__visual--button:focus-visible .client-review__view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (hover: none) {
+  .client-review__view {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.website-sample-modal {
+  width: min(1120px, calc(100vw - 32px));
+  max-width: none;
+  height: min(92svh, 960px);
+  max-height: none;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: 24px;
+  background: var(--color-background);
+  box-shadow: 0 32px 100px rgba(0, 0, 0, 0.42);
+  color: var(--color-text);
+}
+
+.website-sample-modal[open] {
+  display: block;
+  animation: sample-modal-enter 220ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.website-sample-modal::backdrop {
+  background: rgba(5, 5, 8, 0.78);
+  backdrop-filter: blur(7px);
+}
+
+@keyframes sample-modal-enter {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.website-sample-modal__panel {
+  display: grid;
+  height: 100%;
+  grid-template-rows: auto minmax(0, 1fr);
+}
+
+.website-sample-modal__header {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  min-height: 82px;
+  padding: 16px 18px 16px 24px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(16px);
+}
+
+.website-sample-modal__header span,
+.website-sample-modal__header h2 {
+  display: block;
+  margin: 0;
+}
+
+.website-sample-modal__header > div:first-child > span {
+  margin-bottom: 4px;
+  color: var(--color-accent);
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.website-sample-modal__header h2 {
+  font-size: clamp(1.05rem, 2vw, 1.4rem);
+  letter-spacing: -0.035em;
+}
+
+.website-sample-modal__actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.website-sample-modal__actions > a {
+  color: var(--color-primary);
+  font-size: 0.76rem;
+  font-weight: 750;
+}
+
+.website-sample-modal__actions > a:hover,
+.website-sample-modal__actions > a:focus-visible {
+  color: var(--color-accent);
+}
+
+.website-sample-modal__actions > button {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: var(--color-white);
+  cursor: pointer;
+  font-size: 1.6rem;
+  line-height: 1;
+  transition: background-color 160ms ease, transform 160ms ease;
+}
+
+.website-sample-modal__actions > button:hover {
+  background: var(--color-accent);
+  transform: rotate(6deg);
+}
+
+.website-sample-modal__actions > button:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+.website-sample-modal__viewport {
+  overflow: auto;
+  padding: clamp(12px, 2.5vw, 30px);
+  overscroll-behavior: contain;
+  background: #e9e9eb;
+}
+
+.website-sample-modal__viewport img {
+  display: block;
+  width: min(100%, 1024px);
+  height: auto;
+  margin: 0 auto;
+  border-radius: 12px;
+  background: var(--color-card);
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.14);
 }
 
 .client-review__content {
