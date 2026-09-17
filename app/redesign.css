@@ -104,10 +104,29 @@ html::-webkit-scrollbar-thumb {
 }
 
 .wordmark {
+  gap: 9px;
   color: var(--color-primary);
   font-size: 1rem;
   font-weight: 900;
   letter-spacing: -0.05em;
+}
+
+.brand-symbol {
+  display: inline-grid;
+  width: 30px;
+  height: 30px;
+  flex: 0 0 30px;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 9px;
+  background: #080808;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.brand-symbol img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
 }
 
 .wordmark::after {
@@ -791,6 +810,23 @@ html::-webkit-scrollbar-thumb {
   font-weight: 900;
   letter-spacing: -0.06em;
   text-transform: uppercase;
+}
+
+.footer-wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.brand-symbol--footer {
+  width: 32px;
+  height: 32px;
+  flex-basis: 32px;
+}
+
+.brand-symbol--footer img {
+  width: 25px;
+  height: 25px;
 }
 
 .site-footer__brand p {
@@ -1939,6 +1975,22 @@ html::-webkit-scrollbar-thumb {
     width: calc(100% - 20px);
     min-height: 48px;
     padding: 6px 7px 6px 16px;
+  }
+
+  .wordmark {
+    gap: 7px;
+  }
+
+  .brand-symbol {
+    width: 27px;
+    height: 27px;
+    flex-basis: 27px;
+    border-radius: 8px;
+  }
+
+  .brand-symbol img {
+    width: 21px;
+    height: 21px;
   }
 
   .navbar__links {

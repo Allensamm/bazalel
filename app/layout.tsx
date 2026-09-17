@@ -16,7 +16,9 @@ export const metadata: Metadata = {
     'Bazalel creates strategic Squarespace websites that help professional-service businesses earn trust, attract qualified enquiries, and turn more attention into action.',
   applicationName: SITE_NAME,
   icons: {
-    icon: [{ url: '/favicon.svg', type: 'image/svg+xml' }],
+    icon: [{ url: '/favicon.png', type: 'image/png', sizes: '192x192' }],
+    shortcut: '/favicon.png',
+    apple: [{ url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
   },
   formatDetection: {
     email: false,

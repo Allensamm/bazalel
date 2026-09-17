@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
@@ -26,7 +27,16 @@ export function Navbar() {
           aria-label="Bazalel home"
           aria-current={pathname === '/' ? 'page' : undefined}
         >
-          Bazalel
+          <span className="brand-symbol" aria-hidden="true">
+            <Image
+              src="/bazalel-logo.png"
+              alt=""
+              width={32}
+              height={32}
+              priority
+            />
+          </span>
+          <span>Bazalel</span>
         </Link>
 
         <Link

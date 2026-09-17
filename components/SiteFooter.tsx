@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 
 export function SiteFooter() {
@@ -5,7 +6,12 @@ export function SiteFooter() {
     <footer className="site-footer grid-surface">
       <div className="site-footer__grid">
         <div className="site-footer__brand">
-          <Link href="/">Bazalel</Link>
+          <Link className="footer-wordmark" href="/" aria-label="Bazalel home">
+            <span className="brand-symbol brand-symbol--footer" aria-hidden="true">
+              <Image src="/bazalel-logo.png" alt="" width={32} height={32} />
+            </span>
+            <span>Bazalel</span>
+          </Link>
           <p>Squarespace websites built to earn trust, clarify your value, and create qualified enquiries.</p>
         </div>
 
