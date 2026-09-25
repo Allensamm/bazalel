@@ -118,7 +118,7 @@ export const articles: Article[] = [
         id: 'bazalel-ranges',
         title: 'How Bazalel currently structures project budgets',
         paragraphs: [
-          'Bazalel currently presents three fixed starting packages: Starter at $1,500 for up to four pages, Growth at $2,500 for up to seven pages, and Authority at $4,000 for up to ten pages. Timelines range from 5 to 14 business days when content, feedback, and scope are ready.',
+          'Bazalel currently presents three fixed starting packages: Starter at $1,500 for up to four pages, Growth at $2,500 for up to seven pages, and Authority at $4,000 for up to ten pages. Timelines range from 5 to 14 calendar days when content, feedback, and scope are ready.',
           {
             before: 'These are Bazalel offer prices, not a universal market benchmark. Review the complete fit and process on ',
             linkText: 'our approach page',
@@ -445,15 +445,15 @@ export const articles: Article[] = [
     introduction:
       'A focused Squarespace website can be built quickly, but the platform is rarely the slow part. The schedule usually depends on how quickly the business can clarify its message, provide content and proof, make decisions, and approve the work.',
     keyTakeaway:
-      'A 5-14 business-day build is realistic for a clearly scoped project with prepared content and one responsible decision-maker; larger or less-defined projects should allow more time.',
+      'A 5-14 calendar-day build is realistic for a clearly scoped project with prepared content and one responsible decision-maker; larger or less-defined projects should allow more time.',
     sections: [
       {
         id: 'typical',
         title: 'A realistic timeline by project size',
         items: [
-          { title: 'Small presence: about 5-7 business days', copy: 'Usually up to four focused pages, limited integrations, existing brand assets, and content that mainly needs refinement.' },
-          { title: 'Growth site: about 7-10 business days', copy: 'Usually includes more service pages, team profiles, conversion structure, copy refinement, analytics, and two coordinated revision rounds.' },
-          { title: 'Broader redesign: about 10-14 business days', copy: 'Usually includes a strategic sitemap, up to ten pages, deeper customization, more proof, migration decisions, and additional quality assurance.' },
+          { title: 'Small presence: about 5-7 calendar days', copy: 'Usually up to four focused pages, limited integrations, existing brand assets, and content that mainly needs refinement.' },
+          { title: 'Growth site: about 7-10 calendar days', copy: 'Usually includes more service pages, team profiles, conversion structure, copy refinement, analytics, and two coordinated revision rounds.' },
+          { title: 'Broader redesign: about 10-14 calendar days', copy: 'Usually includes a strategic sitemap, up to ten pages, deeper customization, more proof, migration decisions, and additional quality assurance.' },
         ],
         note: 'These are Bazalel’s current delivery ranges for suitable scopes, not a promise that every website can or should launch within two weeks.',
       },

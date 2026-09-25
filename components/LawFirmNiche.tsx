@@ -5,7 +5,7 @@ const packages = [
     name: 'Starter',
     price: '$1,500',
     description: 'Build trust quickly and give interested prospects a clear way to contact you.',
-    timeline: '5–7 business days',
+    timeline: '5–7 calendar days',
     features: [
       'A clear journey across up to 4 pages',
       'Custom design that builds credibility',
@@ -19,7 +19,7 @@ const packages = [
     name: 'Growth',
     price: '$2,500',
     description: 'Turn more of your existing attention into qualified enquiries and bookings.',
-    timeline: '7–10 business days',
+    timeline: '7–10 calendar days',
     featured: true,
     features: [
       'A focused journey across up to 7 pages',
@@ -35,7 +35,7 @@ const packages = [
     name: 'Authority',
     price: '$4,000',
     description: 'Reposition an established business with a scalable platform for trust and lead generation.',
-    timeline: '10–14 business days',
+    timeline: '10–14 calendar days',
     features: [
       'A scalable platform across up to 10 pages',
       'Strategic sitemap aligned to business goals',

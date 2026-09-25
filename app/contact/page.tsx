@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { ContactForm } from '@/components/ContactForm';
 import { SiteFooter } from '@/components/SiteFooter';
@@ -34,9 +35,25 @@ export default function ContactPage() {
               </ul>
             </div>
 
-            <p className="contact-page__direct">
-              Prefer email?{' '}
-              <Link href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</Link>
+            <div className="contact-page__person">
+              <Image
+                src="/allen-samuel.jpg"
+                alt="Allen Samuel"
+                width={1280}
+                height={1280}
+                sizes="72px"
+              />
+              <div>
+                <strong>Allen Samuel</strong>
+                <p className="about-person__role">Coordinator of Bazalel</p>
+                <p className="contact-page__direct">
+                  <Link href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</Link>
+                </p>
+              </div>
+            </div>
+            <p className="contact-page__team">
+              Based in Nigeria, our team is here to help you take the next step.
+              {' '}<Link href="/about">Get to know us <span aria-hidden="true">→</span></Link>
             </p>
           </div>
 

@@ -1,0 +1,480 @@
+.navbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.navbar__about {
+  display: inline-flex;
+  min-height: 40px;
+  padding: 8px 10px;
+  align-items: center;
+  border-radius: 999px;
+  color: #414141;
+  font-size: 0.8rem;
+  font-weight: 750;
+  white-space: nowrap;
+}
+
+.navbar__about:hover,
+.navbar__about[aria-current='page'] {
+  background: rgba(255, 255, 255, 0.6);
+  color: var(--color-primary);
+}
+
+.navbar__about:focus-visible,
+.about-text-link:focus-visible,
+.about-page .pill-button:focus-visible,
+.contact-page__team a:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 4px;
+}
+
+.about-container,
+.about-intro__grid {
+  width: min(100%, var(--page-width));
+  margin-inline: auto;
+}
+
+.about-intro,
+.about-section,
+.about-mission {
+  padding: clamp(76px, 9vw, 136px) clamp(24px, 5vw, 80px);
+}
+
+.about-intro__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(40px, 8vw, 112px);
+}
+
+.about-intro h2,
+.about-page h2 {
+  margin: 0;
+  font-size: clamp(2.6rem, 4.6vw, 4.75rem);
+  font-weight: 850;
+  letter-spacing: -0.06em;
+  line-height: 1.02;
+  text-wrap: balance;
+}
+
+.about-intro h2 {
+  font-size: clamp(3rem, 5.4vw, 5.6rem);
+}
+
+.about-intro__copy > p,
+.about-copy > p,
+.about-team__introduction > p:not(.about-eyebrow) {
+  margin: 0 0 22px;
+  color: #505050;
+  font-size: clamp(1rem, 1.3vw, 1.125rem);
+  line-height: 1.8;
+}
+
+.about-intro__person {
+  display: flex;
+  margin-bottom: 26px;
+  align-items: center;
+  gap: 20px;
+}
+
+.about-intro__person img {
+  display: block;
+  width: 88px;
+  height: 88px;
+  flex: 0 0 88px;
+  border-radius: 18px;
+  object-fit: cover;
+}
+
+.about-intro__hello {
+  margin: 0;
+  color: var(--color-primary);
+  font-size: 1.5rem;
+  font-weight: 750;
+  letter-spacing: -0.04em;
+}
+
+.about-person__role {
+  margin: 8px 0 0;
+  color: #505050;
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.about-intro__signature {
+  display: block;
+  margin-top: 30px;
+  color: var(--color-accent);
+  font-size: 0.85rem;
+  font-weight: 750;
+}
+
+.about-text-link {
+  display: inline-flex;
+  min-height: 44px;
+  margin-top: 26px;
+  align-items: center;
+  gap: 16px;
+  border-bottom: 1px solid currentColor;
+  font-size: 0.85rem;
+  font-weight: 750;
+  line-height: 1.5;
+}
+
+.about-text-link span {
+  color: var(--color-accent);
+}
+
+.about-text-link:hover {
+  color: var(--color-accent);
+}
+
+.about-hero {
+  padding: clamp(142px, 16vw, 200px) clamp(24px, 5vw, 80px) clamp(70px, 8vw, 110px);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.about-eyebrow {
+  margin: 0 0 28px;
+  color: var(--color-accent);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  line-height: 1.6;
+  text-transform: uppercase;
+}
+
+.about-hero h1 {
+  margin: 0;
+  font-size: clamp(3.5rem, 6.4vw, 6.4rem);
+  font-weight: 900;
+  letter-spacing: -0.075em;
+  line-height: 0.94;
+}
+
+.about-hero__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(28px, 5vw, 72px);
+}
+
+.about-hero__portrait {
+  margin: 0;
+}
+
+.about-hero__portrait img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 18px;
+}
+
+.about-hero__portrait figcaption {
+  display: flex;
+  margin-top: 18px;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.about-hero__portrait strong {
+  font-size: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.about-hero__portrait span {
+  color: #505050;
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.about-hero h1 em {
+  color: var(--color-accent);
+  font-style: normal;
+}
+
+.about-hero__bottom {
+  display: flex;
+  margin-top: 48px;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.about-hero__bottom > p {
+  max-width: 580px;
+  margin: 0;
+  color: #505050;
+  font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+  line-height: 1.75;
+}
+
+.about-hero__bottom > a {
+  flex-shrink: 0;
+}
+
+.about-story,
+.about-team,
+.about-mission__grid,
+.about-launch {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(40px, 8vw, 112px);
+}
+
+#our-story {
+  scroll-margin-top: 80px;
+}
+
+.about-copy > p:last-child {
+  margin-bottom: 0;
+}
+
+.about-mission {
+  background: var(--color-primary);
+  color: white;
+}
+
+.about-mission .about-eyebrow {
+  color: var(--color-accent-light);
+}
+
+.about-mission__number {
+  display: block;
+  margin: 38px 0 22px;
+  color: var(--color-accent-light);
+  font-size: clamp(5.5rem, 12vw, 11rem);
+  font-weight: 850;
+  letter-spacing: -0.085em;
+  line-height: 0.9;
+}
+
+.about-mission h2 {
+  font-size: clamp(1.9rem, 3vw, 3rem);
+}
+
+.about-mission__note {
+  margin: 28px 0 0;
+  color: #b2b2b2;
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.about-mission__statements {
+  display: grid;
+  align-content: center;
+  gap: 40px;
+}
+
+.about-mission__statements > div {
+  padding-top: 24px;
+  border-top: 1px solid #414141;
+}
+
+.about-mission__statements h3 {
+  margin: 0 0 16px;
+  font-size: 1.25rem;
+  letter-spacing: -0.025em;
+}
+
+.about-mission__statements p {
+  margin: 0;
+  color: #ccc;
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+.about-team__introduction h2 {
+  margin-bottom: 30px;
+}
+
+.about-team__email {
+  display: block;
+  margin-top: 14px;
+  color: #505050;
+  font-size: 0.9rem;
+  overflow-wrap: anywhere;
+}
+
+.about-team__note {
+  padding: clamp(28px, 4vw, 48px);
+  align-self: start;
+  border-radius: 16px;
+  background: var(--surface-gray);
+}
+
+.about-team__note > .about-team__belief {
+  margin: 36px 0 24px;
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  font-weight: 750;
+  letter-spacing: -0.05em;
+  line-height: 1.16;
+}
+
+.about-team__note > p:not(.about-eyebrow, .about-team__belief) {
+  color: #505050;
+  font-size: 0.95rem;
+  line-height: 1.75;
+}
+
+.about-team__note > span {
+  display: block;
+  margin-top: 36px;
+  padding-top: 24px;
+  border-top: 1px solid #c2c2c2;
+  color: #505050;
+  font-size: 0.78rem;
+  line-height: 1.8;
+}
+
+.about-principles {
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.about-principles__list {
+  margin: 48px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.about-principles__list li {
+  display: grid;
+  padding: 30px 0;
+  grid-template-columns: 40px 0.9fr 1.1fr;
+  gap: 28px;
+  border-top: 1px solid #d7d7d7;
+}
+
+.about-principles__list li > span {
+  padding-top: 4px;
+  color: var(--color-accent);
+  font-size: 0.75rem;
+  font-weight: 750;
+}
+
+.about-principles__list h3 {
+  margin: 0;
+  font-size: clamp(1.25rem, 2vw, 1.7rem);
+  font-weight: 750;
+  letter-spacing: -0.04em;
+  line-height: 1.25;
+}
+
+.about-principles__list p {
+  margin: 0;
+  color: #505050;
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.about-launch {
+  padding: clamp(28px, 4vw, 52px);
+  gap: clamp(32px, 5vw, 72px);
+  border-radius: 16px;
+  background: var(--surface-gray);
+}
+
+.about-launch h2 {
+  font-size: clamp(2.4rem, 4vw, 4rem);
+}
+
+.contact-page__team {
+  max-width: 420px;
+  margin-top: 22px;
+  color: #505050;
+  font-size: 0.88rem;
+  line-height: 1.8;
+}
+
+.contact-page__person {
+  display: flex;
+  margin-top: 32px;
+  align-items: center;
+  gap: 18px;
+}
+
+.contact-page__person img {
+  display: block;
+  width: 72px;
+  height: 72px;
+  flex: 0 0 72px;
+  border-radius: 14px;
+  object-fit: cover;
+}
+
+.contact-page__person > div {
+  min-width: 0;
+}
+
+.contact-page__person strong {
+  font-size: 1rem;
+}
+
+.contact-page__person .contact-page__direct {
+  margin-top: 8px;
+  margin-bottom: 0;
+  overflow-wrap: anywhere;
+}
+
+.contact-page__team a {
+  font-weight: 750;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+@media (max-width: 760px) {
+  .about-hero__layout,
+  .about-intro__grid,
+  .about-story,
+  .about-team,
+  .about-mission__grid,
+  .about-launch {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 40px;
+  }
+
+  .about-hero__portrait {
+    width: min(100%, 440px);
+  }
+
+  .about-hero__bottom {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .about-principles__list li {
+    grid-template-columns: 28px minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .about-principles__list p {
+    grid-column: 2;
+  }
+}
+
+@media (max-width: 430px) {
+  .navbar__inner {
+    gap: 8px;
+    padding-left: 12px;
+  }
+
+  .navbar__inner .wordmark {
+    font-size: 0.88rem;
+  }
+
+  .navbar__actions {
+    gap: 4px;
+  }
+
+  .navbar__about {
+    padding-inline: 8px;
+    font-size: 0.72rem;
+  }
+
+  .about-launch {
+    padding: 28px 22px;
+  }
+}

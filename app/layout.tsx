@@ -5,6 +5,7 @@ import { ScrollReveal } from '@/components/ScrollReveal';
 import { SITE_NAME, SITE_URL } from '@/lib/site';
 import './globals.css';
 import './redesign.css';
+import './about.css';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

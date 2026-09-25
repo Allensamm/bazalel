@@ -39,13 +39,22 @@ export function Navbar() {
           <span>Bazalel</span>
         </Link>
 
-        <Link
-          className="contact-link"
-          href="/contact"
-          aria-current={pathname === '/contact' ? 'page' : undefined}
-        >
-          Get in touch
-        </Link>
+        <div className="navbar__actions">
+          <Link
+            className="navbar__about"
+            href="/about"
+            aria-current={pathname === '/about' ? 'page' : undefined}
+          >
+            About us
+          </Link>
+          <Link
+            className="contact-link"
+            href="/contact"
+            aria-current={pathname === '/contact' ? 'page' : undefined}
+          >
+            Get in touch
+          </Link>
+        </div>
       </nav>
     </header>
   );
