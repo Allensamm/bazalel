@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { BrandHero } from '@/components/BrandHero';
-import { AboutIntro } from '@/components/AboutIntro';
 import { LawFirmNiche } from '@/components/LawFirmNiche';
 import { PortfolioShowcase } from '@/components/PortfolioShowcase';
 import { SiteFooter } from '@/components/SiteFooter';
@@ -85,7 +84,6 @@ export default function Home() {
       <main id="main-content" className="site-shell">
         <StructuredData data={structuredData} />
         <BrandHero />
-        <AboutIntro />
         <WordReveal />
 
       <section className="metrics grid-surface" aria-label="Bazalel by the numbers">
