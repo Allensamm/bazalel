@@ -9,9 +9,9 @@ import { StructuredData } from '@/components/StructuredData';
 import { createPageMetadata, SITE_URL } from '@/lib/site';
 
 export const metadata: Metadata = createPageMetadata({
-  title: 'Squarespace Web Design for Service Businesses | Bazalel',
+  title: 'Squarespace Websites for Real Estate Agents & Service Businesses | Bazalel',
   description:
-    'Bazalel designs strategy-led Squarespace websites for real estate agents, consultants, professional services, healthcare, financial services, and growing businesses.',
+    'Bazalel designs Squarespace websites for real estate agents and service businesses. Explore website packages, delivery timelines, and recent design work.',
   path: '/',
 });
 

@@ -14,7 +14,6 @@ const industries = [
   {
     number: '01',
     name: 'Law firms',
-    label: 'Major specialization',
     description:
       'For established practices whose website no longer reflects the quality of their legal work.',
     outcomes: [
@@ -22,7 +21,6 @@ const industries = [
       'Build confidence through attorneys, proof, and process',
       'Make consultation requests simple on every device',
     ],
-    featured: true,
   },
   {
     number: '02',
@@ -59,7 +57,9 @@ const industries = [
   },
   {
     number: '05',
-    name: 'Real estate & property',
+    name: 'Real estate agents & brokerages',
+    label: 'Major specialization',
+    featured: true,
     description:
       'For property professionals whose reputation, portfolio, and local expertise should work harder online.',
     outcomes: [
@@ -126,7 +126,7 @@ export default function IndustriesPage() {
               We learn how your clients choose, then build the message, proof, and
               path that helps the right visitor take action.
             </p>
-            <span>Law firms are a major specialty—not our only focus.</span>
+            <span>Our specialty is <Link href="/real-estate-web-design">Squarespace web design for real estate agents</Link>.</span>
           </div>
         </div>
       </header>

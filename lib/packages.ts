@@ -1,0 +1,48 @@
+export const packages = [
+  {
+    name: 'Starter',
+    price: '$1,500',
+    description: 'Build trust quickly and give interested prospects a clear way to contact you.',
+    timeline: '5–7 calendar days',
+    features: [
+      'A clear journey across up to 4 pages',
+      'Custom design that builds credibility',
+      'Fast, confident mobile experience',
+      'Search-ready SEO foundations',
+      'Easy contact and tap-to-call paths',
+      'Refined copy and a guided launch',
+    ],
+  },
+  {
+    name: 'Growth',
+    price: '$2,500',
+    description: 'Turn more of your existing attention into qualified enquiries and bookings.',
+    timeline: '7–10 calendar days',
+    featured: true,
+    features: [
+      'A focused journey across up to 7 pages',
+      'Conversion-led service positioning',
+      'Credibility-rich founder or team profiles',
+      'Service pages that answer buyer questions',
+      'Enquiry paths built around visitor intent',
+      'Analytics that measure visitor action',
+      '2 revision rounds and launch support',
+    ],
+  },
+  {
+    name: 'Authority',
+    price: '$4,000',
+    description: 'Reposition an established business with a scalable platform for trust and lead generation.',
+    timeline: '10–14 calendar days',
+    features: [
+      'A scalable platform across up to 10 pages',
+      'Strategic sitemap aligned to business goals',
+      'Clear team and service-area architecture',
+      'Proof through FAQs, testimonials and results',
+      'Advanced Squarespace customization',
+      'SEO, analytics and qualified-lead forms',
+      '3 revision rounds',
+      '30 days of post-launch support',
+    ],
+  },
+];

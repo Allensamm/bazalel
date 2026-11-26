@@ -20,9 +20,8 @@ export function SiteFooter({ home = false }: { home?: boolean }) {
           <Link href="/about">About us</Link>
           <Link href="/approach">Approach</Link>
           <Link href="/industries">Industries</Link>
-          {home ? (
-            <Link href="#major-niche">Real estate web design</Link>
-          ) : (
+          <Link href="/real-estate-web-design">Real estate web design</Link>
+          {!home && (
             <Link href="/law-firm-web-design">Law firm web design</Link>
           )}
           <Link href="/work">Our work</Link>
