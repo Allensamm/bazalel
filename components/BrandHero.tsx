@@ -61,7 +61,7 @@ export function BrandHero() {
         </div>
         <div ref={messageRef} className="brand-hero__message">
           <h1 id="hero-title">
-            Squarespace Websites for Law Firms &amp; Professional Service Businesses
+            Squarespace Websites for Real Estate Agents &amp; Professional Service Businesses
           </h1>
           <p>
             Strategy-led, conversion-focused Squarespace websites designed to build

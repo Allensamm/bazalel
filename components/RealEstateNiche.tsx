@@ -49,27 +49,25 @@ const packages = [
   },
 ];
 
-const practiceAreas = [
-  'Business law',
-  'Employment law',
-  'Family law',
-  'Estate planning',
-  'Immigration',
-  'Personal injury',
-  'Real estate',
+const specialties = [
+  'Residential sales',
+  'Luxury homes',
+  'First-time buyers',
+  'Investment properties',
+  'Relocation',
+  'Commercial real estate',
 ];
 
 const industries = [
-  'Law firms',
+  'Real estate agents',
   'Consultants',
   'Financial services',
   'Healthcare practices',
-  'Real estate',
   'Creative studios',
   'Education businesses',
 ];
 
-export function LawFirmNiche() {
+export function RealEstateNiche() {
   return (
     <section id="major-niche" className="niche grid-surface" aria-labelledby="niche-title">
       <div className="niche__intro" data-reveal="up">
@@ -86,7 +84,7 @@ export function LawFirmNiche() {
             decision, we can build a website that helps turn attention into action.
           </p>
           <p className="niche__not-limit">
-            Law firms are a major specialty—<strong>not our only focus.</strong>
+            We specialize in websites for <strong>real estate agents.</strong>
           </p>
           <div className="niche__areas niche__industries" aria-label="Industries we serve">
             {industries.map((industry) => (
@@ -98,39 +96,38 @@ export function LawFirmNiche() {
 
       <div className="niche__profile" data-reveal="up">
         <div className="niche__profile-copy">
-          <p className="niche__label">Major niche · Law firms</p>
-          <h3>A strong legal practice should not be held back by a weak website.</h3>
+          <p className="niche__label">Real estate agents</p>
+          <h3>Help buyers and sellers get to know their local agent.</h3>
           <p>
-            We understand how legal prospects assess credibility online. We clarify
-            services, surface the firm’s proof, and guide high-intent visitors towards
-            a consultation—without making the site feel generic or overcomplicated.
+            Show buyers the neighborhoods you know and sellers how you’ll market
+            their property. Give both a simple way to book a conversation.
           </p>
-          <Link className="niche__detail-link" href="/law-firm-web-design">
-            Explore law firm web design <span aria-hidden="true">→</span>
+          <Link className="niche__detail-link" href="/contact">
+            Discuss your real estate website <span aria-hidden="true">→</span>
           </Link>
         </div>
 
         <dl className="niche__facts">
           <div>
-            <dt>Firm size</dt>
-            <dd>2–20 attorneys</dd>
+            <dt>Team size</dt>
+            <dd>Solo agents and teams</dd>
           </div>
           <div>
-            <dt>Firm profile</dt>
-            <dd>Established or growing practices</dd>
+            <dt>Business profile</dt>
+            <dd>Independent agents and brokerages</dd>
           </div>
           <div>
             <dt>Decision maker</dt>
-            <dd>Managing partner, founder or attorney-owner</dd>
+            <dd>Agent, team lead or managing broker</dd>
           </div>
           <div>
             <dt>Common challenge</dt>
-            <dd>Unclear services, weak mobile experience, and enquiry friction</dd>
+            <dd>Turning neighborhood and property searches into enquiries</dd>
           </div>
         </dl>
 
-        <div className="niche__areas" aria-label="Law firm practice areas">
-          {practiceAreas.map((area) => (
+        <div className="niche__areas" aria-label="Real estate specialties">
+          {specialties.map((area) => (
             <span key={area}>{area}</span>
           ))}
         </div>

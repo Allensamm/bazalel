@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-export function SiteFooter() {
+export function SiteFooter({ home = false }: { home?: boolean }) {
   return (
     <footer className="site-footer grid-surface">
       <div className="site-footer__grid">
@@ -20,7 +20,11 @@ export function SiteFooter() {
           <Link href="/about">About us</Link>
           <Link href="/approach">Approach</Link>
           <Link href="/industries">Industries</Link>
-          <Link href="/law-firm-web-design">Law firm web design</Link>
+          {home ? (
+            <Link href="#major-niche">Real estate web design</Link>
+          ) : (
+            <Link href="/law-firm-web-design">Law firm web design</Link>
+          )}
           <Link href="/work">Our work</Link>
           <Link href="/bazalelpages">Bazalel Pages</Link>
         </div>

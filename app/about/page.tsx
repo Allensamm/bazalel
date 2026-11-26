@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
 import Link from 'next/link';
 import { SiteFooter } from '@/components/SiteFooter';
 import { CONTACT_EMAIL, createPageMetadata } from '@/lib/site';
@@ -41,23 +40,7 @@ export default function AboutPage() {
         <header className="about-hero grid-surface">
           <div className="about-container">
             <p className="about-eyebrow" data-reveal="up">About Bazalel · Based in Nigeria</p>
-            <div className="about-hero__layout">
-              <h1 data-reveal="up">Your business<br />deserves to<br /><em>get going.</em></h1>
-              <figure className="about-hero__portrait" data-reveal="up">
-                <Image
-                  src="/allen-samuel.jpg"
-                  alt="Portrait of Allen Samuel"
-                  width={1280}
-                  height={1280}
-                  sizes="(max-width: 760px) 90vw, (max-width: 1280px) 36vw, 440px"
-                  preload
-                />
-                <figcaption>
-                  <strong>Allen Samuel</strong>
-                  <span>Coordinator of Bazalel</span>
-                </figcaption>
-              </figure>
-            </div>
+            <h1 data-reveal="up">Your business<br />deserves to<br /><em>get going.</em></h1>
             <div className="about-hero__bottom" data-reveal="up">
               <p>
                 We’re Allen Samuel and the Bazalel team. We build Squarespace websites

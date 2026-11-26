@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import Link from 'next/link';
 
 export function AboutIntro() {
@@ -17,13 +16,6 @@ export function AboutIntro() {
         </div>
         <div className="about-intro__copy" data-reveal="up">
           <div className="about-intro__person">
-            <Image
-              src="/allen-samuel.jpg"
-              alt="Allen Samuel"
-              width={1280}
-              height={1280}
-              sizes="88px"
-            />
             <div>
               <p className="about-intro__hello">Hello, I’m Allen Samuel.</p>
               <p className="about-person__role">Coordinator of Bazalel</p>

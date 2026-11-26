@@ -153,42 +153,6 @@
   line-height: 0.94;
 }
 
-.about-hero__layout {
-  display: grid;
-  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-  align-items: center;
-  gap: clamp(28px, 5vw, 72px);
-}
-
-.about-hero__portrait {
-  margin: 0;
-}
-
-.about-hero__portrait img {
-  display: block;
-  width: 100%;
-  height: auto;
-  border-radius: 18px;
-}
-
-.about-hero__portrait figcaption {
-  display: flex;
-  margin-top: 18px;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.about-hero__portrait strong {
-  font-size: 1rem;
-  letter-spacing: -0.02em;
-}
-
-.about-hero__portrait span {
-  color: #505050;
-  font-size: 0.82rem;
-  line-height: 1.5;
-}
-
 .about-hero h1 em {
   color: var(--color-accent);
   font-style: normal;
@@ -425,7 +389,6 @@
 }
 
 @media (max-width: 760px) {
-  .about-hero__layout,
   .about-intro__grid,
   .about-story,
   .about-team,
@@ -433,10 +396,6 @@
   .about-launch {
     grid-template-columns: minmax(0, 1fr);
     gap: 40px;
-  }
-
-  .about-hero__portrait {
-    width: min(100%, 440px);
   }
 
   .about-hero__bottom {

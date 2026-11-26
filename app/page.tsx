@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { BrandHero } from '@/components/BrandHero';
-import { LawFirmNiche } from '@/components/LawFirmNiche';
+import { RealEstateNiche } from '@/components/RealEstateNiche';
 import { PortfolioShowcase } from '@/components/PortfolioShowcase';
 import { SiteFooter } from '@/components/SiteFooter';
 import { WordReveal } from '@/components/WordReveal';
@@ -11,7 +11,7 @@ import { createPageMetadata, SITE_URL } from '@/lib/site';
 export const metadata: Metadata = createPageMetadata({
   title: 'Squarespace Web Design for Service Businesses | Bazalel',
   description:
-    'Bazalel designs strategy-led Squarespace websites for law firms, consultants, professional services, healthcare, financial services, and growing businesses.',
+    'Bazalel designs strategy-led Squarespace websites for real estate agents, consultants, professional services, healthcare, financial services, and growing businesses.',
   path: '/',
 });
 
@@ -49,7 +49,7 @@ export default function Home() {
       name: 'Bazalel',
       url: `${SITE_URL}/`,
       description:
-        'A Squarespace web design agency for law firms and professional-service businesses.',
+        'A Squarespace web design agency for real estate agents and professional-service businesses.',
       parentOrganization: {
         '@type': 'Organization',
         name: 'Join2getherWork',
@@ -74,7 +74,7 @@ export default function Home() {
       provider: { '@id': `${SITE_URL}/#organization` },
       audience: {
         '@type': 'BusinessAudience',
-        audienceType: 'Law firms and professional-service businesses',
+        audienceType: 'Real estate agents and professional-service businesses',
       },
     },
   ];
@@ -156,9 +156,9 @@ export default function Home() {
       </section>
 
         <PortfolioShowcase />
-        <LawFirmNiche />
+        <RealEstateNiche />
       </main>
-      <SiteFooter />
+      <SiteFooter home />
     </>
   );
 }
