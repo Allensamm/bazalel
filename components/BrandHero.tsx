@@ -61,12 +61,10 @@ export function BrandHero() {
         </div>
         <div ref={messageRef} className="brand-hero__message">
           <h1 id="hero-title">
-            Squarespace Websites for Real Estate Agents &amp; Professional Service Businesses
+            Squarespace websites for real estate, hospitality, design studios and law firms
           </h1>
           <p>
-            Strategy-led, conversion-focused Squarespace websites designed to build
-            trust, communicate expertise, and turn serious visitors into qualified
-            enquiries.
+            Showcase a flagship development, invite a guest to book a stay, or help a client choose your practice. We build around the enquiry you want to receive.
           </p>
           <strong className="brand-hero__rating">Over 4.5-star average rating.</strong>
         </div>

@@ -1,24 +1,7 @@
 import Link from 'next/link';
 
+import { industries } from '@/lib/industries';
 import { packages } from '@/lib/packages';
-
-const specialties = [
-  'Residential sales',
-  'Luxury homes',
-  'First-time buyers',
-  'Investment properties',
-  'Relocation',
-  'Commercial real estate',
-];
-
-const industries = [
-  'Real estate agents',
-  'Consultants',
-  'Financial services',
-  'Healthcare practices',
-  'Creative studios',
-  'Education businesses',
-];
 
 export function RealEstateNiche() {
   return (
@@ -28,20 +11,17 @@ export function RealEstateNiche() {
           <span>01</span> Who we build for
         </p>
         <h2 id="niche-title">
-          Built for ambitious service businesses. Specialized where trust matters most.
+          Websites for the people choosing your next project.
         </h2>
         <div className="niche__intro-copy">
           <p>
-            Bazalel works with established professional-service businesses across
-            industries. If expertise, reputation, and trust influence the buying
-            decision, we can build a website that helps turn attention into action.
+            A guest needs to see where they’ll stay. A design client wants to understand the thinking behind your portfolio.
+            A prospective legal client needs to find the lawyer who handles their matter. Explore how we design for each decision.
           </p>
-          <p className="niche__not-limit">
-            We specialize in websites for <strong>real estate agents.</strong>
-          </p>
+          <p>We welcome website briefs from the US, the UK and other international markets.</p>
           <div className="niche__areas niche__industries" aria-label="Industries we serve">
             {industries.map((industry) => (
-              <span key={industry}>{industry}</span>
+              <Link key={industry.id} href={`/industries#${industry.id}`}>{industry.name}</Link>
             ))}
           </div>
         </div>
@@ -49,41 +29,22 @@ export function RealEstateNiche() {
 
       <div className="niche__profile" data-reveal="up">
         <div className="niche__profile-copy">
-          <p className="niche__label">Real estate agents</p>
-          <h3>Help buyers and sellers get to know their local agent.</h3>
+          <p className="niche__label">Real estate development &amp; investment</p>
+          <h3>Give your flagship development a home of its own.</h3>
           <p>
-            Show buyers the neighborhoods you know and sellers how you’ll market
-            their property. Give both a simple way to book a conversation.
+            Bring the site plan, availability and project team together on one page.
+            Buyers can book a viewing, commercial tenants can request leasing details,
+            and investors can ask for the project brief.
           </p>
           <Link className="niche__detail-link" href="/real-estate-web-design">
-            Explore web design for real estate agents <span aria-hidden="true">→</span>
+            Explore real estate web design <span aria-hidden="true">→</span>
           </Link>
         </div>
-
         <dl className="niche__facts">
-          <div>
-            <dt>Team size</dt>
-            <dd>Solo agents and teams</dd>
-          </div>
-          <div>
-            <dt>Business profile</dt>
-            <dd>Independent agents and brokerages</dd>
-          </div>
-          <div>
-            <dt>Decision maker</dt>
-            <dd>Agent, team lead or managing broker</dd>
-          </div>
-          <div>
-            <dt>Common challenge</dt>
-            <dd>Turning neighborhood and property searches into enquiries</dd>
-          </div>
+          <div><dt>Project portfolio</dt><dd>Flagship developments, commercial assets and exclusive residences</dd></div>
+          <div><dt>Enquiry routes</dt><dd>Investor introductions, buyer viewings and leasing requests</dd></div>
+          <div><dt>Property information</dt><dd>Your team controls the project details and availability. No MLS feed is required.</dd></div>
         </dl>
-
-        <div className="niche__areas" aria-label="Real estate specialties">
-          {specialties.map((area) => (
-            <span key={area}>{area}</span>
-          ))}
-        </div>
       </div>
 
       <div className="offers">

@@ -5,9 +5,9 @@ import { packages } from '@/lib/packages';
 import { absoluteUrl, createPageMetadata } from '@/lib/site';
 
 const path = '/real-estate-web-design';
-const title = 'Squarespace Web Design for Real Estate Agents';
+const title = 'Web Design for Property Developers & Commercial Real Estate';
 const description =
-  'Bazalel designs Squarespace websites for independent agents and brokerages. Compare packages and timelines, plan neighborhood pages, and scope listing feeds.';
+  'Squarespace websites for property developers, commercial real estate firms, investment groups and boutique luxury brokerages. Showcase projects and capture enquiries.';
 
 export const metadata = createPageMetadata({ title, description, path });
 
@@ -23,29 +23,29 @@ export default function RealEstateWebDesignPage() {
           name: title,
           description,
           provider: { '@type': 'Organization', '@id': absoluteUrl('/#organization'), name: 'Bazalel' },
-          audience: { '@type': 'BusinessAudience', audienceType: 'Real estate agents and brokerages' },
+          audience: { '@type': 'BusinessAudience', audienceType: 'Property developers, commercial real estate firms, real estate investment groups and boutique luxury brokerages' },
         }} />
         <header className="editorial-hero grid-surface">
           <div className="editorial-hero__inner">
             <p>Bazalel · Website design</p>
             <h1>{title}</h1>
             <p className="editorial-hero__lead">
-              We build Squarespace websites for independent agents, teams, and brokerages.
-              Buyers can explore the neighborhoods you serve, and sellers can see how you
-              would market their home before they request a valuation.
+              Bazalel builds Squarespace websites for property developers, commercial real estate firms,
+              investment groups and boutique luxury brokerages. Present the projects you control and give
+              investors, tenants and buyers a clear route to the right person.
             </p>
           </div>
         </header>
         <section className="service-intro grid-surface" aria-labelledby="pages-title">
           <div className="service-intro__grid">
-            <div><h2 id="pages-title">Which pages does a real estate agent need?</h2></div>
+            <div><h2 id="pages-title">What belongs on a flagship development page?</h2></div>
             <div>
-              <p>For a four-page site, start with a homepage that names your market, a buyer guide,
-                a seller guide, and an agent profile with contact details. Give buyers a way to
-                ask about a viewing and sellers a way to request a pricing conversation.</p>
-              <p>If you serve several neighborhoods, add a page where you have firsthand knowledge
-                to share. Explain the housing types buyers can expect, illustrate them with photos
-                you have permission to use, and answer questions you hear during viewings.</p>
+              <p>Start with location, project stage and availability. Pair renderings or completed photography
+                with a site plan, floor plans and delivery milestones. Label renderings clearly so visitors
+                can distinguish the proposal from what they could visit today.</p>
+              <p>Offer separate next steps. A buyer may want a viewing or price sheet, a commercial tenant
+                needs leasing particulars, and an investment partner may want an introduction to the project team.
+                Ask which project they’re interested in so your team can reply with the right information.</p>
             </div>
           </div>
         </section>
@@ -66,22 +66,21 @@ export default function RealEstateWebDesignPage() {
         </section>
         <section className="service-intro grid-surface" aria-labelledby="listings-title">
           <div className="service-intro__grid">
-            <div><h2 id="listings-title">Do I need a live property feed?</h2></div>
+            <div><h2 id="listings-title">Does a property showcase need MLS or IDX?</h2></div>
             <div>
-              <p>If you want to show a handful of properties you represent, individual pages can
-                give each home space for photography, details, and viewing requests.
-                Assign someone to update the price and status when either changes.</p>
-              <p>If buyers need to search live inventory from a multiple listing service (MLS),
-                include that in your brief. Bring your provider’s Internet Data Exchange (IDX)
-                requirements so we can confirm permissions, Squarespace compatibility, and
-                any recurring fees before quoting the integration.</p>
+              <p>No. Developers, investment groups and commercial firms can publish their own projects
+                directly. Each project page can carry its own availability, downloadable particulars
+                and enquiry contact. Assign someone to keep those details current.</p>
+              <p>A boutique luxury brokerage can use the same approach for selected homes, pairing an
+                agent’s local knowledge with photography and a private viewing request. An MLS or IDX
+                feed is relevant when the brief calls for searchable third-party listing inventory.</p>
             </div>
           </div>
         </section>
         <section className="editorial-cta grid-surface">
           <div>
             <h2>Tell us about the market you serve.</h2>
-            <span>Share your service area, current website, and the enquiries you want from buyers or sellers.</span>
+            <span>Share the development, portfolio or brokerage you want to showcase and who should enquire.</span>
             <Link href="/contact">Discuss your real estate website <span aria-hidden="true">→</span></Link>
           </div>
         </section>

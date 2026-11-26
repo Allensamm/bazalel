@@ -662,17 +662,17 @@ html::-webkit-scrollbar-thumb {
   justify-content: flex-start;
 }
 
-.niche__industries span:first-child {
+.niche__industries a:first-child {
   border-color: var(--color-accent);
   color: var(--color-accent);
 }
 
-.niche__areas span {
+.niche__areas a {
   border-color: rgba(0, 0, 0, 0.14);
   color: rgba(0, 0, 0, 0.5);
 }
 
-.niche__areas span:hover {
+.niche__areas a:hover {
   border-color: var(--color-primary);
   color: var(--color-primary);
 }

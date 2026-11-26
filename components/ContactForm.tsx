@@ -1,5 +1,7 @@
 'use client';
 
+import { industries } from '@/lib/industries';
+
 import { FormEvent, useState } from 'react';
 
 type ContactStatus =
@@ -114,7 +116,7 @@ export function ContactForm() {
           Industry
           <select name="industry" defaultValue="" required>
             <option value="" disabled>Select your industry</option>
-            <option>Law firm</option>
+            {industries.map(({ id, name }) => <option key={id}>{name}</option>)}
             <option>Consulting or advisory</option>
             <option>Financial services</option>
             <option>Healthcare or wellness</option>

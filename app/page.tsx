@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { industries } from '@/lib/industries';
 import { BrandHero } from '@/components/BrandHero';
 import { RealEstateNiche } from '@/components/RealEstateNiche';
 import { PortfolioShowcase } from '@/components/PortfolioShowcase';
@@ -9,9 +10,9 @@ import { StructuredData } from '@/components/StructuredData';
 import { createPageMetadata, SITE_URL } from '@/lib/site';
 
 export const metadata: Metadata = createPageMetadata({
-  title: 'Squarespace Websites for Real Estate Agents & Service Businesses | Bazalel',
+  title: 'Web Design for Real Estate, Hospitality, Studios & Law Firms | Bazalel',
   description:
-    'Bazalel designs Squarespace websites for real estate agents and service businesses. Explore website packages, delivery timelines, and recent design work.',
+    'Bazalel designs Squarespace websites for property developers, investment groups, luxury brokerages, hospitality brands, design studios and professional services.',
   path: '/',
 });
 
@@ -49,7 +50,7 @@ export default function Home() {
       name: 'Bazalel',
       url: `${SITE_URL}/`,
       description:
-        'A Squarespace web design agency for real estate agents and professional-service businesses.',
+        'A Squarespace web design agency for real estate, hospitality, architecture and interior design studios, law firms and high-trust professional services.',
       parentOrganization: {
         '@type': 'Organization',
         name: 'Join2getherWork',
@@ -72,10 +73,7 @@ export default function Home() {
       serviceType: 'Squarespace website strategy, design, and development',
       url: `${SITE_URL}/`,
       provider: { '@id': `${SITE_URL}/#organization` },
-      audience: {
-        '@type': 'BusinessAudience',
-        audienceType: 'Real estate agents and professional-service businesses',
-      },
+      audience: industries.map(({ name }) => ({ '@type': 'BusinessAudience', audienceType: name })),
     },
   ];
 
@@ -158,7 +156,7 @@ export default function Home() {
         <PortfolioShowcase />
         <RealEstateNiche />
       </main>
-      <SiteFooter home />
+      <SiteFooter />
     </>
   );
 }

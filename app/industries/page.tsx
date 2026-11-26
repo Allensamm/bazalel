@@ -1,107 +1,15 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { industries } from '@/lib/industries';
 import { SiteFooter } from '@/components/SiteFooter';
 import { createPageMetadata } from '@/lib/site';
 
 export const metadata: Metadata = createPageMetadata({
-  title: 'Industries',
+  title: 'Web Design for Property, Hospitality, Design Studios & Law Firms',
   description:
-    'Bazalel builds strategic Squarespace websites for law firms, consultants, financial services, healthcare practices, property businesses, studios, and other expert-led companies.',
+    'Explore Squarespace web design for property developers, investment groups, luxury brokerages, hospitality brands, architecture and interior studios, and law firms.',
   path: '/industries',
 });
-
-const industries = [
-  {
-    number: '01',
-    name: 'Law firms',
-    description:
-      'For established practices whose website no longer reflects the quality of their legal work.',
-    outcomes: [
-      'Clarify practice areas and who the firm helps',
-      'Build confidence through attorneys, proof, and process',
-      'Make consultation requests simple on every device',
-    ],
-  },
-  {
-    number: '02',
-    name: 'Consultants & advisors',
-    description:
-      'For experts who need to turn knowledge, experience, and a proven method into a clear reason to engage.',
-    outcomes: [
-      'Package complex expertise into clear services',
-      'Use case studies and insight to establish authority',
-      'Filter enquiries towards stronger-fit clients',
-    ],
-  },
-  {
-    number: '03',
-    name: 'Financial services',
-    description:
-      'For professional firms that need to explain high-consideration services with clarity and restraint.',
-    outcomes: [
-      'Make complicated services easier to understand',
-      'Build confidence through process and credentials',
-      'Guide prospects towards the right conversation',
-    ],
-  },
-  {
-    number: '04',
-    name: 'Healthcare & wellness',
-    description:
-      'For practices that want patients and clients to understand their options and find the right next step quickly.',
-    outcomes: [
-      'Create clearer service and care pathways',
-      'Improve access to essential information on mobile',
-      'Reduce friction around calls and booking requests',
-    ],
-  },
-  {
-    number: '05',
-    name: 'Real estate agents & brokerages',
-    label: 'Major specialization',
-    featured: true,
-    description:
-      'For property professionals whose reputation, portfolio, and local expertise should work harder online.',
-    outcomes: [
-      'Showcase services and selected properties clearly',
-      'Strengthen trust with proof and local expertise',
-      'Create direct paths for buyers, sellers, and investors',
-    ],
-  },
-  {
-    number: '06',
-    name: 'Creative & professional studios',
-    description:
-      'For teams that need more than a beautiful portfolio—they need a site that explains why the work matters.',
-    outcomes: [
-      'Connect strong work to meaningful client outcomes',
-      'Clarify the process and ideal project fit',
-      'Turn portfolio interest into qualified briefs',
-    ],
-  },
-  {
-    number: '07',
-    name: 'Education & training',
-    description:
-      'For educators and training businesses that need to make programmes, proof, and enrolment paths easier to navigate.',
-    outcomes: [
-      'Organize programmes around learner needs',
-      'Use outcomes and testimonials to build confidence',
-      'Simplify registration and enquiry journeys',
-    ],
-  },
-  {
-    number: '08',
-    name: 'Other expert-led businesses',
-    description:
-      'Your industry does not need to be on a list. The strongest fit is a good business with a website that undersells it.',
-    outcomes: [
-      'Define the useful result your website should support',
-      'Create a clearer message and visitor journey',
-      'Measure the actions that matter to the business',
-    ],
-  },
-];
 
 const fitSignals = [
   'Your service depends on credibility and trust',
@@ -118,15 +26,14 @@ export default function IndustriesPage() {
         <div className="industries-hero__inner">
           <p data-reveal="up">Industries</p>
           <h1 data-reveal="up" className="reveal-delay-1">
-            We build where trust drives the decision.
+            Web design for property, hospitality, design studios and professional services.
           </h1>
           <div className="industries-hero__intro" data-reveal="up">
             <p>
-              Bazalel works with professional-service and expert-led businesses.
-              We learn how your clients choose, then build the message, proof, and
-              path that helps the right visitor take action.
+              Explore how a development website can attract investor enquiries, a portfolio can win a studio brief,
+              or a practice page can bring the right matter to a lawyer.
             </p>
-            <span>Our specialty is <Link href="/real-estate-web-design">Squarespace web design for real estate agents</Link>.</span>
+            <span>Explore our <Link href="/real-estate-web-design">real estate</Link> and <Link href="/law-firm-web-design">law firm web design services</Link>.</span>
           </div>
         </div>
       </header>
@@ -148,14 +55,14 @@ export default function IndustriesPage() {
         <div className="industries-grid">
           {industries.map((industry, index) => (
             <article
-              key={industry.name}
-              className={`industry-card${industry.featured ? ' industry-card--featured' : ''}`}
+              key={industry.id}
+              id={industry.id}
+              className={`industry-card${index === 0 ? ' industry-card--featured' : ''}`}
               data-reveal="up"
               style={{ transitionDelay: `${(index % 2) * 100}ms` }}
             >
               <div className="industry-card__topline">
-                <span>{industry.number}</span>
-                {industry.label && <strong>{industry.label}</strong>}
+                <span>{String(index + 1).padStart(2, '0')}</span>
               </div>
               <h3>{industry.name}</h3>
               <p>{industry.description}</p>

@@ -717,7 +717,7 @@ a {
   gap: 10px;
 }
 
-.niche__areas span {
+.niche__areas a {
   padding: 10px 16px;
   border: 1px solid rgba(255, 255, 255, 0.24);
   border-radius: 999px;
@@ -729,7 +729,7 @@ a {
     transform 180ms ease;
 }
 
-.niche__areas span:hover {
+.niche__areas a:hover {
   border-color: var(--color-accent);
   color: var(--color-white);
   transform: translateY(-3px);
@@ -1773,7 +1773,7 @@ a {
     border-left: 0;
   }
 
-  .niche__areas span {
+  .niche__areas a {
     padding: 8px 12px;
     font-size: 0.78rem;
   }
@@ -1890,7 +1890,7 @@ a {
   .works-link,
   .works-link span,
   .offer-card__footer a,
-  .niche__areas span,
+  .niche__areas a,
   .growth-statement h2 strong::after {
     transition: none;
   }
